@@ -1,0 +1,100 @@
+@import 'tailwindcss';
+@import 'lenis/dist/lenis.css';
+
+:root {
+  --canvas: #0a0a0a;
+  --surface: #111111;
+  --surface-2: #1a1a1a;
+  --surface-3: #222222;
+  --ink: #f0ede8;
+  --ink-dim: rgba(240, 237, 232, 0.6);
+  --ink-muted: rgba(240, 237, 232, 0.35);
+  --gold: #c8a45c;
+  --gold-dim: rgba(200, 164, 92, 0.15);
+  --copper: #b8845a;
+  --line: rgba(240, 237, 232, 0.08);
+  --line-strong: rgba(240, 237, 232, 0.15);
+}
+
+@theme inline {
+  --color-canvas: var(--canvas);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-surface-3: var(--surface-3);
+  --color-ink: var(--ink);
+  --color-ink-dim: var(--ink-dim);
+  --color-ink-muted: var(--ink-muted);
+  --color-gold: var(--gold);
+  --color-gold-dim: var(--gold-dim);
+  --color-copper: var(--copper);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+}
+
+@theme {
+  --font-sans: 'DM Sans', sans-serif;
+  --font-display: 'Playfair Display', serif;
+  --font-script: 'Great Vibes', cursive;
+
+  --animate-pulse-opacity: pulse-opacity 2s ease-in-out infinite;
+  --animate-fade-in-up: fade-in-up 0.7s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+  --animate-float: float 3s ease-in-out infinite;
+
+  @keyframes pulse-opacity {
+    0%,
+    100% {
+      opacity: 1;
+    }
+
+    50% {
+      opacity: 0.3;
+    }
+  }
+
+  @keyframes fade-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes float {
+
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+}
+
+@layer base {
+  * {
+    border-color: var(--line);
+  }
+
+  body {
+    @apply bg-canvas text-ink font-sans antialiased;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--canvas);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--line-strong);
+  border-radius: 3px;
+}
